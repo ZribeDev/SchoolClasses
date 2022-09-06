@@ -1,21 +1,14 @@
 Class Access
 <script>
-    async function list_directory(user, repo, directory) {
-  const url = `https://api.github.com/repos/${user}/${repo}/git/trees/master`;
-  directory = directory.split('/').filter(Boolean);
-  const dir = await directory.reduce(async (acc, dir) => {
-      const { url } = await acc;
-      const list = await fetch(url).then(res => res.json());
-      return list.tree.find(node => node.path === dir);
-  }, { url });
-  if (dir) {
-     const list = await fetch(dir.url).then(res => res.json());
-     return list.tree.map(node => node.path);
-  }
-}
+
 </script>
 <p>Classes 2022-2023</p>
 
 <script>
-    list_directory("zribedev", "SchoolClasses", "Classes_2022-2023");
+    var fs = require('fs');
+    var files = fs.readdirSync('/Classes_2022-2023/Class-1');
+    for (i = 0; i < files.length; i++) {
+    let file = files[i];
+        console.log(file)
+    }
 </script>
